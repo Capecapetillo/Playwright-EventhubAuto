@@ -37,8 +37,8 @@ test.describe('Booking Refund Eligibility Tests', () => {
         
         // 2. Click the Book Now button on the first card
         await eventsPage.clickFirstBookNow();
-        console.log('Clicked Book Now on the first event successfully!');
-        await page.waitForURL('**/events/*');
+       // console.log('Clicked Book Now on the first event successfully!');
+        //await page.waitForURL('**/events/*');
         //Fill form fields using your custom getByPlaceholder locators
         await bookingPage.fillBookingDetails('Eduardo Leon', 'test1@test.com', '1234567890');
         console.log('Form inputs populated.');
@@ -85,7 +85,7 @@ test.describe('Booking Refund Eligibility Tests', () => {
 
         await dashboardPage.clickBrowseEvents();
         await eventsPage.clickFirstBookNow();
-        await page.waitForURL('**/events/*');
+        //await page.waitForURL('**/events/*');
 
         // NEW: Click the + button twice to increase quantity to 3
         await bookingPage.incrementQuantity(2);

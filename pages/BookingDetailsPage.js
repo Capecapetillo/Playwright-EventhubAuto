@@ -6,6 +6,8 @@ class BookingDetailsPage {
          // 1. Locator for the page title/heading
            // this.eventTitle = page.getByRole('heading', {name: 'Dilli Diwali Mela'});
         // 2. Playwright Best Practice: Target the text block that contains the alphanumeric booking reference format.
+         // Grabs whatever main title is rendered on the page
+         this.eventTitle = page.locator('h1, h2 .event-title').first();
         // We look for a string that matches the pattern (Letter-Number...) right on the page.
         this.bookingRefText = page.locator('text=/^[A-Z]-[A-Z0-9]+$/');
         // 3. Main identification section locator (Event Details header)
@@ -15,8 +17,7 @@ class BookingDetailsPage {
          this.spinner = page.locator('#refund-spinner');
          //step 6 - Locate result element by id #refund-result
          this.refundResult = page.locator('#refund-result');
-         // Grabs whatever main title is rendered on the page
-         this.eventTitle = page.locator('h1, h2').first();
+        
       
       }
 

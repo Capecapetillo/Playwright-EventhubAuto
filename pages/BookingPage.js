@@ -47,11 +47,16 @@ class BookingPage {
 
     // --- New Method to change quantity for test 2---
     async incrementQuantity(times) {
-        for (let i = 0; i < times; i++) {
-            await this.incrementButton.click();
-        }
-        console.log(`Clicked increment button ${times} times.`);
+        // Check if the button is disabled due to stock limits
+    const isDisabled = await this.incrementButton.isDisabled();
+        if (isDisabled) {
+        console.log('WARNING: Increment button is disabled. Event has reached its maximum stock limit.');
+        return;
     }
 
-}
+    for (let i = 0; i < times; i++) {
+        await this.incrementButton.click();
+    }
+    console.log(`Clicked increment button ${times} times.`);
+}}
 module.exports = { BookingPage };

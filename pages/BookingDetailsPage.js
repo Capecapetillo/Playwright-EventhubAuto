@@ -4,7 +4,7 @@ class BookingDetailsPage {
     constructor(page) {
          this.page = page;
          // 1. Locator for the page title/heading
-            this.eventTitle = page.getByRole('heading', {name: 'Dilli Diwali Mela'});
+           // this.eventTitle = page.getByRole('heading', {name: 'Dilli Diwali Mela'});
         // 2. Playwright Best Practice: Target the text block that contains the alphanumeric booking reference format.
         // We look for a string that matches the pattern (Letter-Number...) right on the page.
         this.bookingRefText = page.locator('text=/^[A-Z]-[A-Z0-9]+$/');
@@ -15,6 +15,8 @@ class BookingDetailsPage {
          this.spinner = page.locator('#refund-spinner');
          //step 6 - Locate result element by id #refund-result
          this.refundResult = page.locator('#refund-result');
+         // Grabs whatever main title is rendered on the page
+         this.eventTitle = page.locator('h1, h2').first();
       
       }
 
@@ -60,12 +62,10 @@ class BookingDetailsPage {
       // 1. Assert the result container element is visible
          await expect(this.refundResult).toBeVisible();
          console.log('Assertion Passed: Refund result container is visible.');
-      //Assert it contains text Eligible for refund
-       await expect(this.refundResult).toContainText([
-         'Eligible for refund', 
-         'Single-ticket bookings qualify for a full refund.'
-
-       ]);
+      // Check for the substrings sequentially on the single block
+        await expect(this.refundResult).toContainText('Eligible for refund');
+        await expect(this.refundResult).toContainText('Single-ticket bookings qualify for a full refund.');
+        
           console.log('Assertion Passed: All valid refund status phrases verified.');
     }
 

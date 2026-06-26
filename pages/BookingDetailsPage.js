@@ -61,11 +61,12 @@ class BookingDetailsPage {
          await expect(this.refundResult).toBeVisible();
          console.log('Assertion Passed: Refund result container is visible.');
       //Assert it contains text Eligible for refund
-       await expect(this.refundResult).toContainText('Eligible for refund');
-       //Assert it contains text Single-ticket bookings qualify for a full refund
-       await expect(this.refundResult).toContainText('Single-ticket bookings qualify for a full refund.');
-       console.log('Assertion Passed: Refund status text matches criteria perfectly.');
+       await expect(this.refundResult).toContainText([
+         'Eligible for refund', 
+         'Single-ticket bookings qualify for a full refund.'
 
+       ]);
+          console.log('Assertion Passed: All valid refund status phrases verified.');
     }
 
     // Add this inside your BookingDetailsPage class file

@@ -2,8 +2,8 @@ const { test } = require('@playwright/test');
 const { POMManager } = require('../pages/POMManager');
 
 const BASE_URL = 'https://eventhub.rahulshettyacademy.com';
-const USERNAME = 'eduardo_leoncape@hotmail.com';
-const PASSWORD = 'Test190?[]';
+const USERNAME = process.env.TEST_USERNAME;
+const PASSWORD = process.env.TEST_PASSWORD;
 
 // Reusable login helper function
 async function loginAndGoToBooking(page){

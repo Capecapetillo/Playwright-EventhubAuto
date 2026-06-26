@@ -7,7 +7,7 @@ class BookingDetailsPage {
            // this.eventTitle = page.getByRole('heading', {name: 'Dilli Diwali Mela'});
         // 2. Playwright Best Practice: Target the text block that contains the alphanumeric booking reference format.
          // Grabs whatever main title is rendered on the page
-         this.eventTitle = page.locator('h1, h2 .event-title').first();
+         this.eventTitle = page.locator('h1, h2, .event-title').first();
         // We look for a string that matches the pattern (Letter-Number...) right on the page.
         this.bookingRefText = page.locator('text=/^[A-Z]-[A-Z0-9]+$/');
         // 3. Main identification section locator (Event Details header)
